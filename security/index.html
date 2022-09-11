@@ -1,0 +1,170 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+    <!--<meta http-equiv="refresh" content="5;url=#">-->>
+    <meta name="keywords" content="高级认证,实名认证">
+    <meta name="description" content="高级认证收录,该网站不存在任何风险,可以安全访问,您也想你的网站被认证,赶快加入我们吧">
+    <title>高级安全认证</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="favicon.ico"> 
+	<style>.circle-chart{width:120px;height:120px;}
+.circle-chart__circle{transform:rotate(-90deg);transform-origin:center;stroke:#00acc1;stroke-width:2;stroke-linecap:square;fill:none;animation:circle-chart-fill 2s reverse;}
+.circle-chart__circle--negative{transform:rotate(-90deg) scale(1,-1);}
+.circle-chart__background{stroke:#efefef;stroke-width:2;fill:none;}
+.circle-chart__info{opacity:0;transform:translateY(.3em);animation:circle-chart-appear 2s forwards;}
+.circle-chart__percent{font-size:8px;alignment-baseline:central;text-anchor:middle;}
+.circle-chart__subline{font-size:3px;alignment-baseline:central;text-anchor:middle;}
+.success-stroke{stroke:#00c851;}
+.warning-stroke{stroke:#fb3;}
+.danger-stroke{stroke:#f44;}
+@keyframes circle-chart-fill{to{stroke-dasharray:0 100;}
+}
+@keyframes circle-chart-appear{to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+    <div class="con">
+        <img src="img/label.png" alt="">
+        <p class="text">高级网站认证</p>
+        <h3 class="title">Layzer的个人主页</h3>
+        <p class="url">认证网站：www.kudevops.cn</p>
+        <!---->
+        <div class="cate">
+            <ul>
+                <li class="">ICP备案信息</li>
+                <li class="">域名注册信息</li>
+                <li class="">工商登记信息</li>
+                <li class="">业务资质许可</li>
+                <li class="">身份证明信息</li>
+                <li class="">网站信誉信息</li>
+                <li class="">网站安全监测</li>
+                <li class="">网站漏洞检测</li>
+            </ul>
+            <p class="cate-txt">安全防伪提示：请确认本页面是以https开头，即应用数据加密传输功能保证信息传输的安全性。</p>
+        </div>
+        <!---->
+        <div class="result">
+            <ul>
+                <li>
+                    <h4>谷歌浏览器安全检测结果</h4>
+                    <p>
+                        <span>当前状态</span>
+<i class="">安全</i>
+                    </p>
+                </li>
+                <li>
+                    <h4>域名被墙检测结果</h4>
+                    <p>
+                        <span>域名被墙</span>
+<i class="">恭喜，该域名没有被墙</i>
+                    </p>
+                </li>
+                <li>
+                    <h4>微信域名拦截检测结果</h4>
+                    <p>
+                        <span>微信拦截</span>
+                        <i class="">未拦截</i>
+                    </p>
+                </li>
+                <li>
+                    <h4>是否支持IPv6</h4>
+                    <p>
+                        <span>检测结果</span>
+                        <i class="">是</i>
+                    </p>
+                </li>
+                <li>
+                    <h4>安全检测结果</h4>
+                    <p>
+                        <span>网站检测</span>
+<i class="">暂未发现风险</i>
+                        <em><a href="/">高级认证</a></em>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <!---->
+        <div class="seal">
+            <ul>
+                <li>
+                    <span>审核方</span>
+                    <p>高级安全认证中心</p>
+                </li>
+                <li>
+                    <span>签发时间</span>
+                    <p>2022-09-09</p>
+                    <img src="img/zyz.gif" alt="">
+                </li>
+            </ul>
+        </div>
+        <!---->
+        <div class="score">
+            <div class="circlechart" data-percentage="100">
+                <i></i>
+                <span>100分</span>
+            </div>
+            <h4>检测综合评分</h4>
+            <p class="txt">签发时间：2022-09-09<a href="/">主页</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/circle-progress.js"></script>
+<script>
+
+function makesvg(percentage, inner_text){
+  var inner_text = "";
+  var abs_percentage = Math.abs(percentage).toString();
+  var percentage_str = percentage.toString();
+  var classes = ""
+
+  if(percentage < 0){
+    classes = "danger-stroke circle-chart__circle--negative";
+  } else if(percentage > 0 && percentage <= 70){
+    classes = "warning-stroke";
+  } else{
+    classes = "success-stroke";
+  }
+
+ var svg = '<svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" xmlns="http://www.w3.org/2000/svg">'
+     + '<circle class="circle-chart__background" cx="16.9" cy="16.9" r="15.9" />'
+     + '<circle class="circle-chart__circle '+classes+'"'
+     + 'stroke-dasharray="'+ abs_percentage+',100"    cx="16.9" cy="16.9" r="15.9" />'
+     + '<g class="circle-chart__info">'
+     + '   <text class="circle-chart__percent" x="17.9" y="15.5">'+percentage_str+'%</text>';
+
+  if(inner_text){
+    svg += '<text class="circle-chart__subline" x="16.91549431" y="22">'+inner_text+'</text>'
+  }
+  
+  svg += ' </g></svg>';
+  
+  return svg
+}
+
+(function( $ ) {
+
+    $.fn.circlechart = function() {
+        this.each(function() {
+            var percentage = $(this).data("percentage");
+            var inner_text = $(this).text();
+            $(this).html(makesvg(percentage, inner_text));
+        });
+        return this;
+    };
+
+}( jQuery ));
+
+		$('.circlechart').circlechart(); // Initialization
+	</script>
+<script language="Javascript">
+document.oncontextmenu=new Function("event.returnValue=false");
+document.onselectstart=new Function("event.returnValue=false");
+</script>
+<div style="display: none;">
+</div>
+
+
+</body></html>
